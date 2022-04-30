@@ -1,0 +1,30 @@
+/**
+* Flight service.
+**/
+
+syntax = "proto3";
+package flight.v1;
+
+option go_package = "github.com/cool-develope/volume-flight-golang/pathctrl/pb";
+
+service FlightService {
+    // Getters
+    /// Get one sorted flight
+    rpc GetSortedFlight(GetSortedFlightRequest) returns (GetSortedFlightResponse);
+}
+
+// Flight message represents source and destination 
+message Flight {
+    string source = 1;
+    string destination = 2;
+}
+
+// Get request
+message GetSortedFlightRequest {
+    repeated Flight flights = 1;
+}
+
+// Get response
+message GetSortedFlightResponse {
+    Flight sorted = 1;
+}
